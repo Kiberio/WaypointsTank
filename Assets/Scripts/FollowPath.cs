@@ -28,14 +28,18 @@ public class FollowPath : MonoBehaviour
         g.AStar(currentNode, wps[6]);
         currentWP = 0;
     }
+    public void GoToFabric(){
+        g.AStar(currentNode, wps[9]);
+        currentWP = 0;
+    }
     // Update is called once per frame
     void LateUpdate()
     {
         if (g.getPathLength() == 0 || currentWP == g.getPathLength())
             return;
-        //O nó que estará mais próximo neste momento
+        //O nï¿½ que estarï¿½ mais prï¿½ximo neste momento
         currentNode = g.getPathPoint(currentWP);
-        //se estivermos mais próximo bastante do nó o tanque se moverá para o próximo
+        //se estivermos mais prï¿½ximo bastante do nï¿½ o tanque se moverï¿½ para o prï¿½ximo
         if (Vector3.Distance(
         g.getPathPoint(currentWP).transform.position,
         transform.position) < accuracy)
@@ -52,6 +56,8 @@ public class FollowPath : MonoBehaviour
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation,
             Quaternion.LookRotation(direction),
             Time.deltaTime * rotSpeed);
+
+            transform.position = Vector3.MoveTowards(transform.position, goal.position, speed * Time.deltaTime);
         }
     }
 }
