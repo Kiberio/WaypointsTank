@@ -1,5 +1,5 @@
 # WaypointTank
-## Versão: 1.0 
+## Versão: 1.1 
 ## Status do Projeto: ✔️ Concluído
 
 ## Tópicos
